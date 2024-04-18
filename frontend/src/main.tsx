@@ -10,6 +10,10 @@ import Article from "./pages/Article/Article.tsx";
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Demo />,
+  },
+  {
     path: "/demo",
     element: <Demo />,
   },
