@@ -1,29 +1,50 @@
-import React from "react";
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import React, { useState } from "react";
+import { ArticleInterface } from "../../pages/Article/Article";
+import Blockquote from "@tiptap/extension-blockquote";
+import BulletList from "@tiptap/extension-bullet-list";
+import Heading from "@tiptap/extension-heading";
+import { useArticleContext } from "../../hooks/useArticleContext";
 
 const ArticleContent = () => {
+  const { article } = useArticleContext();
+  const [editable, setEditable] = useState(false);
+  const editor = useEditor({
+    editable,
+    content: article.content,
+    extensions: [
+      StarterKit.configure({}),
+
+      Heading.configure({
+        HTMLAttributes: {
+          class: "text-2xl font-bold",
+          levels: [1],
+        },
+      }),
+
+      BulletList.configure({
+        HTMLAttributes: {
+          class: "list", // Adicione suas classes Tailwind CSS aqui
+          itemTypeName: "listItem",
+          keepMarks: true,
+        },
+      }),
+      Blockquote.configure({
+        HTMLAttributes: {
+          class: "blockQuoute",
+        },
+      }),
+    ],
+  });
+
+  if (!editor) {
+    return null;
+  }
+
   return (
-    <div className="text-medium text-black">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-        Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies
-        sed, dolor. Cras elementum ultrices diam.
-      </p>
-      <ul className="list-disc list-inside">
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-        <li>
-          Sed non risus. Suspendisse lectus tortor, dignissim sit amet,
-          adipiscing nec, ultricies sed, dolor.
-        </li>
-        <li>
-          Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper
-          congue, euismod non, mi.
-        </li>
-      </ul>
-      <p>
-        Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non
-        fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa,
-        scelerisque vitae, consequat in, pretium a, enim.
-      </p>
+    <div className="py-10">
+      <EditorContent editor={editor} />
     </div>
   );
 };

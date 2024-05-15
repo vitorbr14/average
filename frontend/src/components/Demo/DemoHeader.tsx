@@ -6,6 +6,10 @@ import BtnCadastro from "../Cadastro/BtnCadastro";
 import { FormCadastro } from "../Cadastro/FormCadastro";
 import logo from "./logo.png";
 import CadastrarEmail from "../Cadastro/CadastrarEmail";
+import GoogleButton from "react-google-button";
+import { signInWithGooglePopup } from "../firebase/firebaseConfig";
+import ModalLogin from "../Cadastro/ModalLogin";
+import LoginForm from "../Cadastro/LoginForm";
 
 type menuitens = {
   label: string;
@@ -13,35 +17,30 @@ type menuitens = {
 };
 const DemoHeader = () => {
   const [open, setOpen] = useState(false);
-
+  const [openModalLogin, setOpenModalLogin] = useState(false);
   const handleClickModal = () => {
     setOpen(!open);
-    // document.body.style.overflowY = "hidden";
   };
+  const handleClickModalLogin = () => {
+    setOpenModalLogin(!openModalLogin);
+  };
+
   return (
     <>
       <ModalCadastro open={open} handleClickModal={handleClickModal}>
-        {/* <h1 className="text-2xl">Se junte ao Avarege!</h1> */}
-        <div className="w-full md:w-3/5 ">
+        <div className="w-full md:w-3/5 flex justify-center ">
           <CadastrarEmail />
         </div>
-        {/* <h1 className="md:text-xl text-base text-center">
-          Já tem uma conta?
-          <Link to={"/"} className="text-purple-600">
-            faça login
-          </Link>
-          <div
-            className="text-center md:w-4/5 w-full m-auto"
-            style={{ lineHeight: ".8em" }}
-          >
-            <span className="text-xs text-gray-400">
-              Clique em 'Inscrever-se' para concordar com os Termos de Serviço
-              do Medium e reconhecer que a Política de Privacidade do Average se
-              aplica a você.
-            </span>
-          </div>
-        </h1> */}
       </ModalCadastro>
+
+      <ModalLogin
+        handleClickModalLogin={handleClickModalLogin}
+        openModalLogin={openModalLogin}
+      >
+        <div className="w-full md:w-3/5 flex justify-center text-center flex-col">
+          <LoginForm />
+        </div>
+      </ModalLogin>
 
       <div className="bg-purple-800 h-20 flex items-center ">
         <div className="container mx-auto flex justify-between items-center">
@@ -62,6 +61,12 @@ const DemoHeader = () => {
               })}
             </ul>
 
+            <button
+              className="bg-black p-3 mr-2 rounded-full text-white"
+              onClick={() => setOpenModalLogin(true)}
+            >
+              Login
+            </button>
             <button
               className="bg-black p-3 rounded-full text-white"
               onClick={() => setOpen(true)}

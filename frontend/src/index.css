@@ -50,3 +50,70 @@
   border-left: 1px solid rgb(214, 214, 214);
   width: 100%;
 }
+
+.buttons_tiptap {
+  background-color: #262c40;
+  display: flex;
+  justify-content: space-evenly;
+  height: 3em;
+  align-items: center;
+  margin-bottom: 2em;
+  margin-top: 1em;
+  border-radius: 1em;
+}
+
+.buttons_tiptap svg {
+  color: #fff;
+}
+.blockQuoute {
+  border-left: 3px solid rgba(0, 0, 0, 0.84);
+  padding-left: 20px;
+  margin-left: -23px;
+  padding-bottom: 2px;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.list {
+  list-style-type: disc;
+  padding-left: 1em;
+}
+
+.heading1 {
+  color: red;
+}
+.is-active {
+  background-color: #839dd1;
+  display: flex;
+  border-radius: 0.6em;
+}
+
+.tiptapEditor {
+  box-shadow: 9px 10px 21px -3px rgba(0, 0, 0, 0.1);
+  padding: 2em 0;
+  outline: none;
+}
+.tiptapEditor ::placeholder {
+  padding-left: 1.25rem;
+}
+/* .tiptapEditor:focus-visible {
+  display: none;
+} */
+.sombra {
+  box-shadow: 9px 10px 21px -3px rgba(0, 0, 0, 0.1);
+
+  border: 1em;
+  padding-left: 1em;
+}
+
+.sombra::placeholder {
+  padding-left: 0.1em;
+}
+
+.css-b62m3t-container {
+  width: 60%;
+}
+
+.content_visibility {
+  content-visibility: auto;
+}

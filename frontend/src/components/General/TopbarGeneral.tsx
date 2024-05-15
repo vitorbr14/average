@@ -5,7 +5,10 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { TfiPencilAlt } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
+import { useAuthContext } from "../../hooks/useAuthContext";
+
 const TopbarGeneral = () => {
+  const { currentUser } = useAuthContext();
   return (
     <>
       <div className="container-lg mx-auto">
@@ -44,15 +47,13 @@ const TopbarGeneral = () => {
               <IoIosSearch className="text-2xl text-gray-600 pr-1 inline md:hidden" />
             </Link>
 
-            <Link to={"/"} className="flex ">
+            <Link to={"/article/new"} className="flex ">
               <TfiPencilAlt className="text-2xl text-gray-600 pr-1" />
               <h1 className="text-base text-gray-600 hidden md:inline">
                 Escreva
               </h1>
             </Link>
-            <div className="text-2xl text-gray-600 pr-1">
-              <IoIosNotificationsOutline />
-            </div>
+
             <div>
               <div className="w-8 h-8 bg-purple-600 rounded-full"></div>
             </div>

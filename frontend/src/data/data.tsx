@@ -11,10 +11,6 @@ export const headerMenuData = [
     label: "Write",
     link: "/",
   },
-  {
-    label: "Sign in",
-    link: "/",
-  },
 ];
 
 export const topics = [
@@ -56,4 +52,30 @@ export const loginWays = [
     label: "Email",
     icon: "MdEmail",
   },
+];
+
+const usuarios = [
+  "samanthabrooks1405999@gmail.com",
+  "lucasanderson1405999@gmail.com",
+  "emilyjohnson1405999@gmail.com",
+  "danielsmith1405999@gmail.com",
+  "jessicaparker1405999@gmail.com",
+  "michaelthompson1405999@gmail.com",
+  "oliviadavis1405999@gmail.com",
+  "benjaminharris1405999@gmail.com",
+  "avamartinez1405999@gmail.com",
+  "ethanwilson1405999@gmail.com",
+];
+
+const usernames = [
+  "Samantha Brooks",
+  "Lucas Anderson",
+  "Emily Johnson",
+  "Daniel Smith",
+  "Jessica Parker",
+  "Michael Thompson",
+  "Olivia Davis",
+  "Benjamin Harris",
+  "Ava Martinez",
+  "Ethan Wilson",
 ];

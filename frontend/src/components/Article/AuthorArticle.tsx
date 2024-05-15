@@ -1,12 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { FaRegComments } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import ArticleComments from "./ArticleComments";
+import ArticleComments from "./Comments/ArticleCommentsMenu";
+import { readingTime } from "reading-time-estimator";
+import { useArticleContext } from "../../hooks/useArticleContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import axios from "axios";
 
 const AuthorArticle = () => {
   const [favorite, setFavorite] = useState(false);
+  const [authorName, setAuthorName] = useState<string>();
+
+  const { article, getUserName, username, handleComments, allComments } =
+    useArticleContext();
+  const { currentUser } = useAuthContext();
+  // useEffect(() => {
+  //   if (currentUser?.uid) {
+  //     getUserInfos(currentUser.uid);
+  //   }
+
+  //   console.log({ article: article });
+  // }, [currentUser]);
+
+  useEffect(() => {
+    // !AQUI EU PEGO O NOME DO AUTOR
+    getUserName(article.users[0].userId);
+  }, []);
+
+  const time = readingTime(article.content, 238, "pt-br");
   return (
     <>
       <Link to={"/"} className="flex py-2">
@@ -15,13 +38,13 @@ const AuthorArticle = () => {
         </div>
         <div className="flex flex-col ">
           <div className="flex">
-            <h1 className="text-base font-bold mr-4">John Doe</h1>
+            <h1 className="text-base font-bold mr-4">{username}</h1>
             <button className="text-sm italic text-purple-800 hover:text-purple-600">
               seguir
             </button>
           </div>
           <div className="text-sm text-gray-400 flex">
-            <h4>5 min de leitura • 5 dias atrás</h4>
+            <h4>{time.text}</h4>
           </div>
         </div>
       </Link>
@@ -38,9 +61,14 @@ const AuthorArticle = () => {
           )}
           <span className="text-sm text-gray-500 ml-2">1405</span>
         </div>
-        <div className="flex items-center">
+        <div
+          className="flex items-center cursor-pointer"
+          onClick={handleComments}
+        >
           <FaRegComments className="text-2xl text-purple-500" />
-          <span className="text-sm text-gray-500 ml-2">76</span>
+          <span className="text-sm text-gray-500 ml-2">
+            {allComments.length}
+          </span>
         </div>
       </div>
       <div className="divider"></div>
