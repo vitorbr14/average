@@ -86,6 +86,7 @@ export const getSingleArticle = async (req: Request, res: Response) => {
     include: {
       users: true,
       category: true,
+      likes: true,
     },
   });
 
@@ -93,4 +94,41 @@ export const getSingleArticle = async (req: Request, res: Response) => {
     throw new NotFoundError("Artigo não encontrado!");
   }
   res.json(findArticle);
+};
+
+export const likeArticle = async (req: Request, res: Response) => {
+  const { articleid } = req.params;
+  const { userid } = req.body;
+
+  const newLike = await prisma.likesOnArticle.create({
+    data: {
+      articleid,
+      userid,
+    },
+  });
+
+  res.json(newLike);
+};
+
+export const deslikeArticle = async (req: Request, res: Response) => {
+  const { comentarioid } = req.params;
+
+  const dislike = await prisma.likesOnArticle.delete({
+    where: {
+      id: comentarioid,
+    },
+  });
+
+  res.json(dislike);
+};
+
+export const getLikesArticle = async (req: Request, res: Response) => {
+  const { articleid } = req.params;
+
+  const getAllLikesFromArticle = await prisma.likesOnArticle.findMany({
+    where: {
+      articleid,
+    },
+  });
+  res.json(getAllLikesFromArticle.length);
 };

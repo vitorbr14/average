@@ -21,7 +21,7 @@ model User {
   password String
   articles UserArticle[]
   comments Comments[]
-  
+   likes LikesOnArticle[]
 }
 
 model Article {
@@ -33,6 +33,7 @@ model Article {
   users UserArticle[]
   category Category[]
   comments Comments[]
+  likes LikesOnArticle[]
 
  
 }
@@ -65,4 +66,19 @@ model Comments {
     userId String
     createdAt DateTime  @default(now())
    articleId String
+}
+
+
+model Likes {
+    id String  @id @default(uuid())
+
+}
+
+
+model LikesOnArticle {
+   id String  @id @default(uuid())
+  article Article @relation(fields: [articleid], references: [id])
+   user User @relation(fields: [userid], references: [id])
+  articleid String
+    userid String
 }

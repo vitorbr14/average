@@ -9,11 +9,7 @@ export const Demo = () => {
   return (
     <>
       <DemoHeader />
-      <button
-        onClick={() => console.log(import.meta.env.REACT_APP_FIREBASE_API_KEY)}
-      >
-        aa
-      </button>
+
       <DemoHero />
       <div id="heightDiv" className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-5 md:h-full h-auto ">

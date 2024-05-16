@@ -10,6 +10,7 @@ import ArticleCommentsMenu from "../../components/Article/Comments/ArticleCommen
 import ArticleCommentsItems from "../../components/Article/Comments/ArticleCommentsItems";
 import { ArticleContext } from "../../context/ArticleContext";
 import { useArticleContext } from "../../hooks/useArticleContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export interface ArticleInterface {
   id: string;
@@ -31,6 +32,7 @@ const Article = () => {
   const { article, getArticle, commentsOpen, handleComments } =
     useArticleContext();
 
+  const { currentUser } = useAuthContext();
   useEffect(() => {
     getArticle(id);
   }, []);
@@ -38,8 +40,6 @@ const Article = () => {
   return (
     <>
       <TopbarGeneral />
-      <button onClick={() => console.log(article)}>Testar contexto</button>
-      {/* <h1>{ContextAuth.currentUser?.email}</h1> */}
       <div className="container-article h-auto pb-40">
         {article && <TitleArticle />}
 

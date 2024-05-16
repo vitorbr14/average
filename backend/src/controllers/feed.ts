@@ -49,7 +49,7 @@ export const getfeed = async (req: Request, res: Response) => {
       };
     }
   });
-  console.log(process.env.PRIVATE_KEY);
+
   const shuffledArray = shuffle(filterArticleAndNames);
   res.json(shuffledArray);
 };
