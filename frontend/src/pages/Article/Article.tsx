@@ -11,6 +11,7 @@ import ArticleCommentsItems from "../../components/Article/Comments/ArticleComme
 import { ArticleContext } from "../../context/ArticleContext";
 import { useArticleContext } from "../../hooks/useArticleContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import NotLoggedTopBar from "../../components/General/NotLoggedTopBar";
 
 export interface ArticleInterface {
   id: string;
@@ -32,14 +33,14 @@ const Article = () => {
   const { article, getArticle, commentsOpen, handleComments } =
     useArticleContext();
 
-  const { currentUser } = useAuthContext();
+  const { currentUser, isLoggedIn } = useAuthContext();
   useEffect(() => {
     getArticle(id);
   }, []);
 
   return (
     <>
-      <TopbarGeneral />
+      {isLoggedIn ? <TopbarGeneral /> : <NotLoggedTopBar />}
       <div className="container-article h-auto pb-40">
         {article && <TitleArticle />}
 
