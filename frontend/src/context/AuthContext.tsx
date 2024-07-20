@@ -48,6 +48,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderType> = ({
       if (user) {
         setCurrentUser(user);
         setIsLoggedIn(true);
+        console.log(isLoggedIn);
       }
 
       setLoading(false);
@@ -80,7 +81,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderType> = ({
 
       const registerUser = await axios
         .post(
-          "http://localhost:5656/api/v1/auth/register",
+          import.meta.env.VITE_API_URL + "api/v1/auth/register",
           {
             id: user.uid,
             name,
@@ -100,6 +101,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderType> = ({
           const user = userCredentials.user;
         })
         .catch(function (error) {
+          console.log(error);
           user.delete();
         });
 

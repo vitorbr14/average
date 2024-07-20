@@ -16,7 +16,7 @@ const Home = () => {
     if (currentUser) {
       if (currentUser.accessToken) {
         axios
-          .get("http://localhost:5656/api/v1/feed", {
+          .get(import.meta.env.VITE_API_URL + "api/v1/feed", {
             headers: {
               "x-firebase-appcheck": `Bearer ${currentUser?.accessToken}`,
             },

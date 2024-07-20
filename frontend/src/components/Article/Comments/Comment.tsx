@@ -16,8 +16,7 @@ TimeAgo.addDefaultLocale(en);
 
 const Comment = ({
   commentary,
-  id,
-  userId,
+
   name,
   createdAt,
 }: allCommentsProps) => {

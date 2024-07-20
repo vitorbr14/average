@@ -15,7 +15,6 @@ type CommentInputProps = {
 };
 export const CommentInput = ({
   id,
-  allComments,
 
   setAllComents,
 }: CommentInputProps) => {
@@ -41,7 +40,7 @@ export const CommentInput = ({
     };
 
     axios
-      .post("http://localhost:5656/api/v1/comments/", commentObj, {
+      .post(import.meta.env.VITE_API_URL + "api/v1/comments/", commentObj, {
         headers: {
           "x-firebase-appcheck": `Bearer ${ContextAuth.currentUser?.accessToken}`,
         },

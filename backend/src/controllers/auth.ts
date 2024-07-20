@@ -76,3 +76,7 @@ export const getUserInfo = async (req: Request, res: Response) => {
   }
   res.json(findUser);
 };
+
+export const testeRota = async (req: Request, res: Response) => {
+  res.json("Tá funfando");
+};

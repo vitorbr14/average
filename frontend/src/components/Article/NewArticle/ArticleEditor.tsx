@@ -60,7 +60,7 @@ const ArticleEditor = () => {
 
     console.log(newObj);
     axios
-      .post("http://localhost:5656/api/v1/articles/", newObj, {
+      .post(import.meta.env.VITE_API_URL + "api/v1/articles/", newObj, {
         headers: {
           "x-firebase-appcheck": `Bearer ${currentUser?.accessToken}`,
         },

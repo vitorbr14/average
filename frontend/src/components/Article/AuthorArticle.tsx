@@ -30,7 +30,7 @@ const AuthorArticle = () => {
   const handleLike = () => {
     axios
       .post(
-        `http://localhost:5656/api/v1/articles/like/${id}`,
+        import.meta.env.VITE_API_URL + `api/v1/articles/like/${id}`,
         { userid: currentUser?.uid },
         {
           headers: {
@@ -55,7 +55,7 @@ const AuthorArticle = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5656/api/v1/article/like/${id}`)
+      .get(import.meta.env.VITE_API_URL + `api/v1/article/like/${id}`)
       .then(function (response) {
         setLikes(response.data);
       })
@@ -80,7 +80,7 @@ const AuthorArticle = () => {
 
   const dislike = async (id: any) => {
     const thisArticle = await axios
-      .get(`http://localhost:5656/api/v1/article/${id}`)
+      .get(import.meta.env.VITE_API_URL + `api/v1/article/${id}`)
       .then(function (response) {
         return response.data;
       })
@@ -94,11 +94,14 @@ const AuthorArticle = () => {
 
     if (liked) {
       axios
-        .delete(`http://localhost:5656/api/v1/articles/like/${liked[0].id}`, {
-          headers: {
-            "x-firebase-appcheck": `Bearer ${currentUser?.accessToken}`,
-          },
-        })
+        .delete(
+          import.meta.env.VITE_API_URL + `api/v1/articles/like/${liked[0].id}`,
+          {
+            headers: {
+              "x-firebase-appcheck": `Bearer ${currentUser?.accessToken}`,
+            },
+          }
+        )
         .then((response) => {
           console.log(response.data);
           setLikes((prevLikes) => prevLikes - 1);
@@ -108,7 +111,9 @@ const AuthorArticle = () => {
           console.error(error);
         });
 
-      console.log(`http://localhost:5656/api/v1/articles/like/${liked[0].id}`);
+      console.log(
+        import.meta.env.VITE_API_URL + `api/v1/articles/like/${liked[0].id}`
+      );
     }
 
     return liked[0].id;

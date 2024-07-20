@@ -21,7 +21,7 @@ const options = [
   { value: "vanilla", label: "Vanilla" },
 ];
 
-const SetCategories = ({ register, control }: SetCategoriesProps) => {
+const SetCategories = ({ control }: SetCategoriesProps) => {
   const { setValue } = useForm();
   const { getValues } = useForm<Inputs>();
   const [category, setCategory] = useState("");
@@ -30,7 +30,7 @@ const SetCategories = ({ register, control }: SetCategoriesProps) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5656/api/v1/category")
+      .get(import.meta.env.VITE_API_URL + "api/v1/category")
       .then(function (response) {
         setAllCategories(response.data);
       })

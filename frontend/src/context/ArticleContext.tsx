@@ -79,7 +79,7 @@ export const ArticleContextProvider: React.FC<ArticleContextProviderType> = ({
 
   const getArticle = (id: string) => {
     axios
-      .get(`http://localhost:5656/api/v1/article/${id}/`)
+      .get(import.meta.env.VITE_API_URL + `api/v1/article/${id}/`)
       .then(function (response) {
         setArticle(response.data);
         console.log(response.data);
@@ -92,7 +92,7 @@ export const ArticleContextProvider: React.FC<ArticleContextProviderType> = ({
 
   const getUserInfos = (id: string) => {
     axios
-      .get(`http://localhost:5656/api/v1/auth/userinfo/${id}`)
+      .get(import.meta.env.VITE_API_URL + `api/v1/auth/userinfo/${id}`)
       .then((response) => {
         setUserDetails(response.data);
       })
@@ -103,7 +103,7 @@ export const ArticleContextProvider: React.FC<ArticleContextProviderType> = ({
 
   const getUserName = (id: string) => {
     axios
-      .get(`http://localhost:5656/api/v1/getcomments/getuser/${id}`)
+      .get(import.meta.env.VITE_API_URL + `api/v1/getcomments/getuser/${id}`)
       .then((response) => {
         setusername(response.data.name);
       })
@@ -118,7 +118,7 @@ export const ArticleContextProvider: React.FC<ArticleContextProviderType> = ({
 
   const getCommentsFromArticle = (id: string) => {
     axios
-      .get(`http://localhost:5656/api/v1/getcomments/${id}/`)
+      .get(import.meta.env.VITE_API_URL + `api/v1/getcomments/${id}/`)
       .then((response) => {
         setAllComents(response.data);
       })
@@ -129,7 +129,7 @@ export const ArticleContextProvider: React.FC<ArticleContextProviderType> = ({
 
   const getAllArticlesFromUser = (id: string) => {
     axios
-      .get(`http://localhost:5656/api/v1/articlessuggestion/${id}`)
+      .get(import.meta.env.VITE_API_URL + `api/v1/articlessuggestion/${id}`)
       .then((response) => {
         setallArticlesFromUser(response.data);
       })
@@ -140,7 +140,10 @@ export const ArticleContextProvider: React.FC<ArticleContextProviderType> = ({
 
   const getAllArticlesFromUserShuffled = (id: string) => {
     axios
-      .get(`http://localhost:5656/api/v1/articlessuggestion/shuffled/${id}`)
+      .get(
+        import.meta.env.VITE_API_URL +
+          `api/v1/articlessuggestion/shuffled/${id}`
+      )
       .then((response) => {
         setallArticlesFromUserShuffled(response.data);
       })

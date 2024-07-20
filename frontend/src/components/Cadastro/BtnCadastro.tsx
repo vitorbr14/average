@@ -7,7 +7,7 @@ type BtnCadastroProps = {
   label: string;
   icon: any;
 };
-const BtnCadastro = ({ label, icon }: BtnCadastroProps) => {
+const BtnCadastro = ({ label }: BtnCadastroProps) => {
   return (
     <Link
       to={"/"}

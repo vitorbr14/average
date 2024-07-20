@@ -9,7 +9,7 @@ const CategoriesMenu = () => {
   const [allCategories, setAllCategories] = useState<categoriesType[]>();
   useEffect(() => {
     axios
-      .get("http://localhost:5656/api/v1/category")
+      .get(import.meta.env.VITE_API_URL + "api/v1/category")
       .then(function (response) {
         setAllCategories(response.data);
       })

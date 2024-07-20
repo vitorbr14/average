@@ -24,7 +24,10 @@ const Categories = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5656/api/v1/articlessuggestion/category/${id}`)
+      .get(
+        import.meta.env.VITE_API_URL +
+          `api/v1/articlessuggestion/category/${id}`
+      )
       .then(function (response) {
         setAllArticles(response.data);
       })

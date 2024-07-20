@@ -1,21 +1,22 @@
 import React from "react";
-import logo from "../Demo/logo.png";
+
 import { LuPenSquare } from "react-icons/lu";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { TfiPencilAlt } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import { useAuthContext } from "../../hooks/useAuthContext";
-
+import logo from "../Demo/logo.png";
 const TopbarGeneral = () => {
   const { currentUser } = useAuthContext();
   return (
     <>
       <div className="container-lg mx-auto">
-        <header className="flex justify-between">
+        <header className="flex justify-between py-3">
           <div className="flex items-center">
             <Link to={"/home"}>
-              <img src={logo} alt="" className="w-20" />
+              {/* <img src={logo} alt="" className="w-20" /> */}
+              <h1 className="text-4xl pl-6">Average</h1>
             </Link>
             <div className="relative text-gray-600 focus-within:text-gray-400 hidden md:inline">
               {/* <span className="absolute inset-y-0 left-0 flex items-center pl-2">
