@@ -1,6 +1,6 @@
-# Average Blog - Aplicação PERN Stack com Autenticação Firebase 📝🔥
+# Average Blog - Aplicação PERN Stack com Autenticação Firebase e Docker 🐳 📝🔥
 
-Bem-vindo ao **Average**, um blog criado para compartilhar ideias de forma simples e eficiente. Esta aplicação web é construída utilizando a stack PERN (PostgreSQL, Express.js, React, Node.js) e utiliza o Firebase para autenticação de usuários. No Average, os usuários podem criar contas, fazer login, publicar artigos, curtir publicações e comentar nas postagens, tudo com proteção de rota no front-end para garantir a segurança e integridade dos dados.
+Bem-vindo ao **Average**, um blog criado para compartilhar ideias de forma simples e eficiente. Esta aplicação web é construída utilizando a stack PERN (PostgreSQL, Express.js, React, Node.js) e utiliza o Firebase para autenticação de usuários, e Docker para a conteinerização. No Average, os usuários podem criar contas, fazer login, publicar artigos, curtir publicações e comentar nas postagens, tudo com proteção de rota no front-end para garantir a segurança e integridade dos dados.
 
 ## 🎯 Propósito
 
@@ -21,3 +21,4 @@ O **Average** é uma plataforma onde indivíduos podem compartilhar suas ideias,
 - **Back-end**: Node.js e Express.js para a construção de uma API robusta e escalável.
 - **Banco de Dados**: PostgreSQL para armazenamento seguro e eficiente dos dados.
 - **Autenticação**: Firebase Authentication para gerenciamento seguro de usuários e sessões.
+- **Docker**: Docker para conteinerização e a facilitação na hora do deploy.
